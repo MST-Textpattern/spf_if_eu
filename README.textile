@@ -16,7 +16,7 @@ h2. Installation:
 
 h2. Usage:
 
-# The plugin is intended to be used on page templates (e.g. to serve a cookie prompt such as "cPrompt":https://github.com/michaelw90/cPrompt or my "forked version":https://github.com/spiffin/cPrompt - but can also be used in articles and forms.
+# The plugin is intended to be used on page templates (e.g. to serve a cookie prompt such as "cPrompt":https://github.com/michaelw90/cPrompt or my "forked version":https://github.com/spiffin/cPrompt) - but it can also be used in articles and forms.
 # Content within @<txp:spf_if_eu> ... </txp:spf_if_eu>@ tags will only be served to visitors from the EU.
 # The @<txp:else />@ tag can also be used to serve content to non-EU visitors only.
 
