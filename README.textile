@@ -1,0 +1,34 @@
+h1. spf_if_eu
+
+A conditional container tag for Textpattern.
+
+Serve content to EU visitors only (e.g. a cookie-prompt: see usage notes below) or non-EU visitors (via @<txp:else />@) tag.
+
+Latest version: "spf_if_eu GitHub repository":https://github.com/spiffin/spf_if_eu.
+
+
+h2. Installation:
+
+# "DOWNLOAD":https://github.com/spiffin/spf_if_eu/zipball/master and unzip.
+# Upload the 'geoip' directory to your web root.
+# Install and activate this plugin - spf_if_eu.txt.
+
+
+h2. Usage:
+
+# The plugin is intended to be used on page templates (e.g. to serve a cookie prompt such as "cPrompt":https://github.com/michaelw90/cPrompt or my "forked version":https://github.com/spiffin/cPrompt - but can also be used in articles and forms.
+# Content within @<txp:spf_if_eu> ... </txp:spf_if_eu>@ tags will only be served to visitors from the EU.
+# The @<txp:else />@ tag can also be used to server content only to non-EU visitors.
+
+
+h2. Notes:
+
+# Country detection is via "MaxMind's":http://www.maxmind.com GeoIP database - it (very occasionally) makes errors.
+# Not tested on Texpattern &lt; 4.4.1 and PHP &lt; 5.
+
+
+h2. Version history
+
+0.1 - June 2012
+
+* First release.
