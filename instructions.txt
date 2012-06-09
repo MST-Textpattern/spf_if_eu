@@ -1,0 +1,14 @@
+spf_if_eu quick instructions:
+
+1. Upload the containing 'geoip' directory to your web root:
+
+		geoip
+		css.php
+		files
+		images
+		index.php
+		rpc
+		sites
+		textpattern
+
+2. Install and activate the plugin (spf_if_eu.txt - inside the unzipped folder).
