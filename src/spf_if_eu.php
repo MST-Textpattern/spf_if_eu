@@ -17,7 +17,7 @@ $plugin['name'] = 'spf_if_eu';
 // 1 = Plugin help is in raw HTML.  Not recommended.
 # $plugin['allow_html_help'] = 1;
 
-$plugin['version'] = '0.1';
+$plugin['version'] = '0.2';
 $plugin['author'] = 'Simon Finch';
 $plugin['author_uri'] = 'https://github.com/spiffin/spf_if_eu';
 $plugin['description'] = 'Container tag to display content to EU visitors only';
@@ -57,7 +57,7 @@ if (!defined('txpinterface'))
  * Licensed under GNU General Public License version 2
  * http://www.gnu.org/licenses/gpl-2.0.html
  *
- * Version 0.1 -- 09 June 2012
+ * Version 0.2 -- 26 August 2012
  *
  * Requires geoip.inc and GeoIP.dat to be present in web_root/geoip directory
  */
@@ -70,28 +70,12 @@ function spf_if_eu($atts, $thing) {
   global $prefs;
 
   $gi = geoip_open($prefs['path_to_site'].'/geoip/GeoIP.dat', GEOIP_MEMORY_CACHE);
-  $country_code = geoip_country_code_by_addr($gi, $_SERVER['REMOTE_ADDR']);
-  $country_name = geoip_country_name_by_addr($gi, $_SERVER['REMOTE_ADDR']);
+  $country_code = geoip_country_code_by_addr($gi, remote_addr());
 
 // EU countries array
   $eu = array('AT', 'BE', 'BG', 'CY', 'CZ', 'DK','EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'GB');
 
-// EU-only and non-EU content
-  $eu_only = parse(EvalElse($thing, true));
-  $non_eu = parse(EvalElse($thing, false));
-
-if (in_array($country_code, $eu)) {
-  $output = $eu_only;
-  return $output;
-	exit();
-} else {
-  $output = $non_eu;
-  return $output;
-	exit();
-}
-
-// close geoip
-  geoip_close($gi);
+return parse(EvalElse($thing, in_array($country_code, $eu)));
 
 }
 # --- END PLUGIN CODE ---
@@ -135,6 +119,11 @@ if (0) {
 <br /><hr /><br />
 
 <h2>Version history</h2>
+
+<p>0.2 - 26 August 2012</p>
+<ul>
+<li>Optimised (thanks Jukka).</li>
+</ul>
 
 <p>0.1 - June 2012</p>
 <ul>
